@@ -110,6 +110,11 @@ function writeToDocument(type) {
     var el = document.getElementById("data");
 
     getData(type, function(data) {
+        var pagination;
+     if (data.next || data.previous) {
+         pagination = generatePaginationButtons(data.next, data.previous)
+     }
+
         data = data.results;
         var tableHeaders = getTableHeaders(data[0]);
 
